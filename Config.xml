@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppConfig>
+  <OBS>
+    <Config Key="CameraName" Value="AVerMedia ExtremeCap SDI UVC" />
+    <Config Key="InputResolution" Width="1920" Height="1080" />
+    <Config Key="MainArea" Width="400" Height="400" Outside="60" />
+    <Config Key="DetectSpeed" Value="800" />
+    <Config Key="IgnoreRegion" Top="25" Bottom="25" />
+    <Config Key="OutputResolution" Width="854" Height="480" />
+    <Config Key="Zoom" TopPadding="1" TotalHeight="3.5" />
+    <Config Key="Smoothing" XOffset="100" XSpeed="5" YOffset="70" YSpeed="5" ZOffset="20" ZSpeed="2" />
+    <Config Key="MinFaceSize" Width="100" Height="100" />
+  </OBS>
+</AppConfig>
