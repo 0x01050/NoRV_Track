@@ -5,6 +5,7 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -265,6 +266,7 @@ namespace VCD_Demo
                 source.ROI = new Rectangle(x, y, realWidth, realHeight);
                 Image<Bgr, byte> newimg = source.Copy().Resize(outputResolution.Width, outputResolution.Height, Inter.Linear);
                 resultImage.Image = newimg;
+                Program.Broadcast(newimg.ToJpegData());
                 source.Dispose();
             }
             catch (Exception) { }
@@ -280,11 +282,11 @@ namespace VCD_Demo
             {
                 cameraSource.SignalToStop();
             }
-            if (detectThread != null && !detectThread.IsAlive)
+            if (detectThread != null && detectThread.IsAlive)
             {
                 detectThread.Abort();
             }
-            if (calcThread != null && !calcThread.IsAlive)
+            if (calcThread != null && calcThread.IsAlive)
             {
                 calcThread.Abort();
             }
