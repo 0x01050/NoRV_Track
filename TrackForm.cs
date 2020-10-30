@@ -266,7 +266,7 @@ namespace VCD_Demo
                 source.ROI = new Rectangle(x, y, realWidth, realHeight);
                 Image<Bgr, byte> newimg = source.Copy().Resize(outputResolution.Width, outputResolution.Height, Inter.Linear);
                 resultImage.Image = newimg;
-                Program.Broadcast(newimg.ToJpegData());
+                try { Program.Broadcast(newimg.ToJpegData()); } catch(Exception) { }
                 source.Dispose();
             }
             catch (Exception) { }
