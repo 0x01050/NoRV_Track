@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Accord;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,10 @@ namespace VCD_Demo
     {
         protected override void OnMessage(MessageEventArgs e)
         {
-            Sessions.Broadcast(e.Data);
+        }
+
+        protected override void OnClose(CloseEventArgs e)
+        {
         }
     }
 }

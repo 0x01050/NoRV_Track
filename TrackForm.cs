@@ -266,7 +266,21 @@ namespace VCD_Demo
                 source.ROI = new Rectangle(x, y, realWidth, realHeight);
                 Image<Bgr, byte> newimg = source.Copy().Resize(outputResolution.Width, outputResolution.Height, Inter.Linear);
                 resultImage.Image = newimg;
-                try { Program.Broadcast(newimg.ToJpegData()); } catch(Exception) { }
+                try
+                {
+                    Invoke(new Action(() =>
+                    {
+                        Program.Broadcast(newimg.ToJpegData()); 
+                    }));
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("\n" + DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt") + " : Error happened before Broadcast");
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine("-------------------------------");
+                    Console.WriteLine(e.StackTrace);
+                    Console.WriteLine("###############################\n");
+                }
                 source.Dispose();
             }
             catch (Exception) { }
