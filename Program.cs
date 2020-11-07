@@ -11,12 +11,13 @@ namespace VCD_Demo
         private static WebSocketServer _wssv;
         private static DateTime prevTime = DateTime.Now.AddSeconds(-100);
         public static bool send_finished = true;
+
         public static void Broadcast(byte[] bytes)
         {
             try
             {
                 TimeSpan elapsed = DateTime.Now - prevTime;
-                if (!send_finished && elapsed.TotalSeconds > 5)
+                if ((!send_finished && elapsed.TotalSeconds > 5) || _wssv.WebSocketServices.SessionCount > 5)
                 {
                     Application.Restart();
                 }
